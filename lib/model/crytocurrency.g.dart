@@ -12,14 +12,14 @@ CryptoCurrency _$CryptoCurrencyFromJson(Map<String, dynamic> json) =>
       rank: json['rank'] as String,
       symbol: json['symbol'] as String,
       name: json['name'] as String,
-      supply: json['supply'] as String,
-      maxSupply: json['maxSupply'] as String,
-      marketCapUsd: json['marketCapUsd'] as String,
-      volumeUsd24Hr: json['volumeUsd24Hr'] as String,
-      priceUsd: json['priceUsd'] as String,
-      changePercent24Hr: json['changePercent24Hr'] as String,
-      vwap24Hr: json['vwap24Hr'] as String,
-      explorer: json['explorer'] as String,
+      supply: json['supply'] as String?,
+      maxSupply: json['maxSupply'] as String?,
+      marketCapUsd: json['marketCapUsd'] as String?,
+      volumeUsd24Hr: json['volumeUsd24Hr'] as String?,
+      priceUsd: json['priceUsd'] as String?,
+      changePercent24Hr: json['changePercent24Hr'] as String?,
+      vwap24Hr: json['vwap24Hr'] as String?,
+      explorer: json['explorer'] as String?,
     );
 
 Map<String, dynamic> _$CryptoCurrencyToJson(CryptoCurrency instance) =>

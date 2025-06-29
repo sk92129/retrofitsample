@@ -25,9 +25,9 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
 
   void _initializeApiClient() {
     final dio = Dio();
-    // Add API key to headers if required
+    // Add API key as bearer token in headers
     dio.options.headers['Authorization'] =
-        'Bearer 305ae7fa2f751acd65d11e950bbbec3f5b7608b7858b62f04b43de441e967adb';
+        'Bearer bafe927732d55115fc2e3eebf3884843753f7b3f2dc82e47ac6a65771afb4b14';
     _apiClient = ApiClient(dio);
   }
 
@@ -114,7 +114,7 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
   }
 
   Widget _buildCryptoCard(CryptoCurrency crypto) {
-    final priceChange = double.tryParse(crypto.changePercent24Hr) ?? 0.0;
+    final priceChange = double.tryParse(crypto.changePercent24Hr ?? "0") ?? 0.0;
     final isPositive = priceChange >= 0;
 
     return Card(
@@ -151,7 +151,7 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      '\$${double.tryParse(crypto.priceUsd)?.toStringAsFixed(2) ?? '0.00'}',
+                      '\$${double.tryParse(crypto.priceUsd ?? "0")?.toStringAsFixed(2) ?? '0.00'}',
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -189,11 +189,11 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
                 _buildInfoItem('Rank', '#${crypto.rank}'),
                 _buildInfoItem(
                   'Market Cap',
-                  '\$${_formatNumber(crypto.marketCapUsd)}',
+                  '\$${_formatNumber(crypto.marketCapUsd ?? "0")}',
                 ),
                 _buildInfoItem(
                   'Volume (24h)',
-                  '\$${_formatNumber(crypto.volumeUsd24Hr)}',
+                  '\$${_formatNumber(crypto.volumeUsd24Hr ?? "0")}',
                 ),
               ],
             ),
