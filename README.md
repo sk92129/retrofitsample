@@ -1,6 +1,9 @@
 # retrofitsample
 
-A new Flutter project based on the Retrofit tutorial
+
+There are two branches:
+main - initial work but has a runtime error
+fixes - is based on main and contains the fixes for the runtime error of fetching the data
 
 
 ## Getting Started
