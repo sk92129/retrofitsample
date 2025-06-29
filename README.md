@@ -1,16 +1,41 @@
 # retrofitsample
 
-A new Flutter project.
+A new Flutter project based on the Retrofit tutorial
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Old style API call looks like this.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```
+Future<User> getUser(int id) async {
+  final response = await http.get(
+    Uri.parse('https://api.example.com/users/$id'),
+    headers: {'Content-Type': 'application/json'},
+  );
+  
+  if (response.statusCode == 200) {
+    return User.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to load user');
+  }
+}
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+
+With retrofit, it looks like
+
+```
+@GET('/users/{id}')
+Future<User> getUser(@Path('id') int id);
+```
+
+
+
+##
+To build
+
+flutter pub get
+
+dart run build_runner build --delete-conflicting-outputs 
